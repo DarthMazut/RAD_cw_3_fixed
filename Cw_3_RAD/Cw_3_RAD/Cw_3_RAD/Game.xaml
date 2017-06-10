@@ -1,0 +1,146 @@
+﻿<Window x:Name="xe_Window" x:Class="Cw_3_RAD.Game"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Cw_3_RAD"
+        mc:Ignorable="d"
+        Title="Crazy Button Clicker" Height="500" Width="900" Icon="img/Hopstarter-Keriyo-Emoticons-Smiley-upset-4.ico"  WindowStyle="None" ResizeMode="CanMinimize" AllowsTransparency="True" Opacity="1" StateChanged="em_Window_OnStateChanged">
+
+    <Window.Resources>
+
+        <Storyboard x:Key="Storyboard_Close_ToRed">
+            <ColorAnimation
+                Storyboard.TargetName="xe_TitleBar_TextBlock_Close" 
+                Storyboard.TargetProperty="Background.Color"
+                To="PaleVioletRed" Duration="0:0:0.3" 
+                 />
+        </Storyboard>
+
+        <Storyboard x:Key="Storyboard_Close_ToWhite">
+            <ColorAnimation
+                Storyboard.TargetName="xe_TitleBar_TextBlock_Close" 
+                Storyboard.TargetProperty="Background.Color"
+                To="White" Duration="0:0:0.3" 
+                 />
+        </Storyboard>
+
+        <Storyboard x:Key="Storyboard_Minimize_ToBlue">
+            <ColorAnimation
+                Storyboard.TargetName="xe_TitleBar_TextBlock_Minimize" 
+                Storyboard.TargetProperty="Background.Color"
+                To="SkyBlue" Duration="0:0:0.3" 
+                 />
+        </Storyboard>
+
+        <Storyboard x:Key="Storyboard_Minimize_ToWhite">
+            <ColorAnimation
+                Storyboard.TargetName="xe_TitleBar_TextBlock_Minimize" 
+                Storyboard.TargetProperty="Background.Color"
+                To="White" Duration="0:0:0.3" 
+                 />
+        </Storyboard>
+
+        <Storyboard x:Key="Storyboard_Minimize_Window">
+            <DoubleAnimation
+                Storyboard.TargetName="xe_Window" 
+                Storyboard.TargetProperty="Opacity"
+                To="0" Duration="0:0:0.3" 
+                 />
+        </Storyboard>
+
+        <Storyboard x:Key="Storyboard_Restore_Window">
+            <DoubleAnimation
+                Storyboard.TargetName="xe_Window" 
+                Storyboard.TargetProperty="Opacity"
+                To="1" Duration="0:0:0.3" 
+                 />
+        </Storyboard>
+
+    </Window.Resources>
+
+
+
+
+    <Grid x:Name="xe_MainGrid" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="xe_Grid_TitleBar" MouseLeftButtonDown="em_TitleBar_Grid_OnClick"  Margin="0">
+            <Grid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Losuj kolor"  Click="Losuj_kolor">
+                        <MenuItem.Icon>
+                            <Image Source="img/colours.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </Grid.ContextMenu>
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <LinearGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                            <RotateTransform Angle="270" CenterY="0.5" CenterX="0.5"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </LinearGradientBrush.RelativeTransform>
+                    <GradientStop Color="Yellow" Offset="0"/>
+                    <GradientStop Color="White" Offset="0.9"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Label x:Name="xe_TitleBar_label_Title" Content="Crazy Button Clicker" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Center" Height="25" Width="124"/>
+            <TextBlock x:Name="xe_TitleBar_TextBlock_Minimize" HorizontalAlignment="Right" Margin="0,0,25,0" TextWrapping="Wrap" Text="__" VerticalAlignment="Center" Width="25" Height="25" Padding="6,1,0,0" FontSize="16" Background="White" MouseEnter="em_Minimize_OnMouseEnter" MouseLeave="em_Minimize_OnMouseLeave" MouseLeftButtonDown="em_Minimize_OnClick" ToolTip="Minimalizuj"/>
+            <TextBlock x:Name="xe_TitleBar_TextBlock_Close" HorizontalAlignment="Right" Text="X" VerticalAlignment="Center" Width="25" Height="25" Padding="8,1,0,0" FontSize="16" Background="White" MouseEnter="em_Close_OnMouseEnter" MouseLeave="em_Close_OnMouseLeave" MouseLeftButtonDown="em_Close_OnClick" ToolTip="Zamknij"/>
+        </Grid>
+        <Button x:Name="xe_Button_Back" HorizontalAlignment="Left" Height="40" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Grid.Row="1" Click="em_Back_OnClick">
+            <WrapPanel x:Name="xe_Wroc_WrapPanel">
+                <Image Source="img/Back_img.png" Margin="0,0,5,0" />
+                <Label x:Name="xe_Wroc_Labelka" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" FontFamily="Comic Sans MS">Wróć</Label>
+            </WrapPanel>
+        </Button>
+        <Ellipse x:Name="xe_Elipse_ClickLefts" HorizontalAlignment="Left" Height="150" Margin="175,75,0,0" Grid.Row="1" VerticalAlignment="Top" Width="150" RenderTransformOrigin="0.687,0.72">
+            <Ellipse.Fill>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FF002EFF" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </RadialGradientBrush>
+            </Ellipse.Fill>
+        </Ellipse>
+        <Label x:Name="xe_Label_Pozostalo" Content="Pozostało" HorizontalAlignment="Left" Margin="200,25,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="21.333" FontFamily="Comic Sans MS"/>
+        <Label x:Name="xe_Label_NumberLeft" Content="#Num" HorizontalAlignment="Left" Margin="175,75,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="32" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="150" Height="150" Foreground="Black"/>
+        <Label x:Name="xe_Label_Klikniec" Content="Kliknięć" HorizontalAlignment="Left" Margin="210,225,0,0" Grid.Row="1" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="21.333" FontFamily="Comic Sans MS"/>
+        <Rectangle x:Name="xe_Rectangle_TIPP" HorizontalAlignment="Left" Height="150" Margin="20,0,0,20" Grid.Row="1" VerticalAlignment="Bottom" Width="450" StrokeThickness="3" Stroke="#FFFF8B00" Fill="#FFFFD0A2"/>
+
+        <ScrollViewer x:Name="xe_ScrollViewer" Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="20,0,0,20" Padding="10" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="150" Width="486">
+            <TextBlock x:Name="xe_TextBlock_TIPP" Margin="0" Grid.Row="1" TextWrapping="Wrap" FontFamily="Segoe Print" Foreground="#FF0C00FF" Padding="0" Width="429" HorizontalAlignment="Left">
+                  WSKAZÓWKA:
+                <LineBreak/>
+                <LineBreak/>
+                Kliknij "Start" w prawym dolnym rogu i obserwuj komunikaty pokazujące się na zielonym kwadracie powyżej. Gdy kwadrat zmieni kolor na czerwony kliknij ponownie przycisk poniżej - tym razem pokaże się na nim ikona "Crazy Button Clicker". Od momentu zmiany koloru kwadratu, aż do kliknięcia przez Ciebie przycisku poniżej czas jest mierzony. Czas jest mierzony z dokładnością do 1 ms, aczkolwiek metoda OnTimerTick ma rozdzielczość koło 30-40 ms, co jest dość denerwujące, bo podobno w WPF timer miałbyć dokładniejszy niż w WinForms, ale nie ważne... Powyżej tego textu znajduje się licznik z ilością kliknięć do końca gry. Po zakończonej grze możesz wpisać się na listę najlepszych wyników podając swój nick. Miłej gry i powodzenia!
+            </TextBlock>
+        </ScrollViewer>
+        <Button x:Name="xe_BUTTON" HorizontalAlignment="Right" Margin="0,0,20,20" Grid.Row="1" VerticalAlignment="Bottom" Width="315" Height="100" FontFamily="Comic Sans MS" FontSize="48" Click="em_BUTTON_CLICK">
+            <WrapPanel x:Name="xe_BUTTON_WrapPanel" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Image x:Name="xe_BUTTON_face_img" Source="img/Hopstarter-Keriyo-Emoticons-Smiley-upset-4.ico"/>
+                <Label x:Name="xe_BUTTON_Label_text" FontSize="32" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">Start</Label>
+            </WrapPanel>
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <LinearGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                            <RotateTransform Angle="-45" CenterY="0.5" CenterX="0.5"/>
+                        </TransformGroup>
+                    </LinearGradientBrush.RelativeTransform>
+                    <GradientStop Color="#FF23FF00" Offset="0"/>
+                    <GradientStop Color="#FFCCF1C0" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Rectangle x:Name="xe_DUZY_ZIELONY_KWADRAT" Fill="LightGreen" HorizontalAlignment="Right" Height="300" Margin="0,25,27,0" Grid.Row="1"  VerticalAlignment="Top" Width="300"/>
+        <Border x:Name="xe_KWADRAT_border" BorderBrush="{x:Null}" Width="300" Margin="0,25,27,0" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Top" Height="300">
+            <TextBlock x:Name="xe_KWADRAT_textBlock" HorizontalAlignment="Center" Grid.Row="1" TextWrapping="Wrap" Text="UWAGA - tu pojawią się komunikaty!" VerticalAlignment="Center" FontFamily="Comic Sans MS" Padding="10,5" FontSize="21.333" Margin="0"/>
+        </Border>
+    </Grid>
+</Window>

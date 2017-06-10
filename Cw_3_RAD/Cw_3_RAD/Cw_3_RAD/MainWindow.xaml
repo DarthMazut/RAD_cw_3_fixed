@@ -1,0 +1,272 @@
+﻿<Window x:Name="xe_MainWindow" x:Class="Cw_3_RAD.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Cw_3_RAD"
+        mc:Ignorable="d"
+        Title="Crazy Button Clicker" Height="500" Width="700" WindowStyle="None" Icon="img/Hopstarter-Keriyo-Emoticons-Smiley-upset-4.ico"  ResizeMode="CanMinimize" AllowsTransparency="True" Opacity="1" StateChanged="em_MainWindow_OnStateChanged">
+
+    <Window.Resources>
+
+        <Storyboard x:Key="Storyboard_Close_ToRed">
+            <ColorAnimation
+                Storyboard.TargetName="xe_TitleBar_TextBlock_Close" 
+                Storyboard.TargetProperty="Background.Color"
+                To="PaleVioletRed" Duration="0:0:0.3" 
+                 />
+        </Storyboard>
+
+        <Storyboard x:Key="Storyboard_Close_ToWhite">
+            <ColorAnimation
+                Storyboard.TargetName="xe_TitleBar_TextBlock_Close" 
+                Storyboard.TargetProperty="Background.Color"
+                To="White" Duration="0:0:0.3" 
+                 />
+        </Storyboard>
+
+        <Storyboard x:Key="Storyboard_Minimize_ToBlue">
+            <ColorAnimation
+                Storyboard.TargetName="xe_TitleBar_TextBlock_Minimize" 
+                Storyboard.TargetProperty="Background.Color"
+                To="SkyBlue" Duration="0:0:0.3" 
+                 />
+        </Storyboard>
+
+        <Storyboard x:Key="Storyboard_Minimize_ToWhite">
+            <ColorAnimation
+                Storyboard.TargetName="xe_TitleBar_TextBlock_Minimize" 
+                Storyboard.TargetProperty="Background.Color"
+                To="White" Duration="0:0:0.3" 
+                 />
+        </Storyboard>
+
+        <Storyboard x:Key="Storyboard_Minimize_Window">
+            <DoubleAnimation
+                Storyboard.TargetName="xe_MainWindow" 
+                Storyboard.TargetProperty="Opacity"
+                To="0" Duration="0:0:0.3" 
+                 />
+        </Storyboard>
+
+        <Storyboard x:Key="Storyboard_Restore_Window">
+            <DoubleAnimation
+                Storyboard.TargetName="xe_MainWindow" 
+                Storyboard.TargetProperty="Opacity"
+                To="1" Duration="0:0:0.3" 
+                 />
+        </Storyboard>
+
+        <Storyboard x:Key="Storyboard_Logo_Rotate">
+            <DoubleAnimation
+                Storyboard.TargetName="Dupa" 
+                Storyboard.TargetProperty="Angle"
+                From="0" To="360" Duration="0:0:5" RepeatBehavior="Forever"
+                 />
+        </Storyboard>
+
+        <Storyboard x:Key="Storyboard_Highscore_TabOpen">
+            <DoubleAnimation
+                Storyboard.TargetName="xe_SideBar_Grid_Highscore" 
+                Storyboard.TargetProperty="Width"
+                To="467" Duration="0:0:0.6" >
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase EasingMode="EaseInOut" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+
+        <Storyboard x:Key="Storyboard_Highscore_TabClose">
+            <DoubleAnimation
+                Storyboard.TargetName="xe_SideBar_Grid_Highscore" 
+                Storyboard.TargetProperty="Width"
+                To="0" Duration="0:0:0.6" >
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase EasingMode="EaseInOut" />
+                </DoubleAnimation.EasingFunction>
+
+            </DoubleAnimation>
+        </Storyboard>
+
+        <Storyboard x:Key="Storyboard_About_TabOpen">
+            <DoubleAnimation
+                Storyboard.TargetName="xe_SideBar_Grid_About" 
+                Storyboard.TargetProperty="Width"
+                To="467" Duration="0:0:0.6" >
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase EasingMode="EaseInOut" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+
+        <Storyboard x:Key="Storyboard_About_TabClose">
+            <DoubleAnimation
+                Storyboard.TargetName="xe_SideBar_Grid_About" 
+                Storyboard.TargetProperty="Width"
+                To="0" Duration="0:0:0.6" >
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase EasingMode="EaseInOut" />
+                </DoubleAnimation.EasingFunction>
+
+            </DoubleAnimation>
+        </Storyboard>
+
+        <Storyboard x:Key="Storyboard_Settings_TabOpen">
+            <DoubleAnimation
+                Storyboard.TargetName="xe_SideBar_Grid_Settings" 
+                Storyboard.TargetProperty="Width"
+                To="467" Duration="0:0:0.6" >
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase EasingMode="EaseInOut" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+
+        <Storyboard x:Key="Storyboard_Settings_TabClose">
+            <DoubleAnimation
+                Storyboard.TargetName="xe_SideBar_Grid_Settings" 
+                Storyboard.TargetProperty="Width"
+                To="0" Duration="0:0:0.6" >
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase EasingMode="EaseInOut" />
+                </DoubleAnimation.EasingFunction>
+
+            </DoubleAnimation>
+        </Storyboard>
+
+
+
+    </Window.Resources>
+
+
+
+    <Grid x:Name="xe_GridMain">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+
+                <GradientStop Color="White" Offset="0.8"/>
+                <GradientStop Color="#FF787878" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid x:Name="xe_GridTitleBar" Grid.ColumnSpan="2" MouseLeftButtonDown="em_TitleBar_Grid_OnClick" MouseLeftButtonUp="em_TitleBar_Grid_OnMouseButtonRelease">
+            <Grid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Losuj kolor"  Click="Losuj_kolor">
+                        <MenuItem.Icon>
+                            <Image Source="img/colours.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </Grid.ContextMenu>
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <LinearGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                            <RotateTransform Angle="270" CenterY="0.5" CenterX="0.5"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </LinearGradientBrush.RelativeTransform>
+                    <GradientStop Color="Yellow" Offset="0"/>
+                    <GradientStop Color="White" Offset="0.9"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Label x:Name="xe_TitleBar_label_Title" Content="Crazy Button Clicker" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Center" Height="25" Width="124"/>
+            <TextBlock x:Name="xe_TitleBar_TextBlock_Minimize" HorizontalAlignment="Right" Margin="0,0,25,0" TextWrapping="Wrap" Text="__" VerticalAlignment="Center" Width="25" Height="25" Padding="6,1,0,0" FontSize="16" Background="White" MouseEnter="em_Minimize_OnMouseEnter" MouseLeave="em_Minimize_OnMouseLeave" MouseLeftButtonDown="em_Minimize_OnClick" ToolTip="Minimalizuj"/>
+            <TextBlock x:Name="xe_TitleBar_TextBlock_Close" HorizontalAlignment="Right" Text="X" VerticalAlignment="Center" Width="25" Height="25" Padding="8,1,0,0" FontSize="16" Background="White" MouseEnter="em_Close_OnMouseEnter" MouseLeave="em_Close_OnMouseLeave" MouseLeftButtonDown="em_Close_OnClick" ToolTip="Zamknij"/>
+        </Grid>
+        <Button x:Name="xe_SideMenu_Button_Graj" Content="Graj" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="200" Height="60" FontSize="29.333" FontFamily="Segoe Print" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="1" MouseEnter="em_Graj_OnMouseEnter" MouseLeave="em_Graj_OnMouseLeave" Click="em_Graj_OnClick"/>
+        <Label x:Name="xe_SideBar_Label_Logo" Content="Crazy Button Clicker" HorizontalAlignment="Center" Margin="0,175,0,0" Grid.Row="1" VerticalAlignment="Center" FontFamily="Comic Sans MS" FontSize="32" Grid.Column="1">
+            <Label.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <LinearGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                            <RotateTransform CenterY="0.5" CenterX="0.5" x:Name="Dupa" Angle="0"/>
+                        </TransformGroup>
+                    </LinearGradientBrush.RelativeTransform>
+                    <GradientStop Color="Red" Offset="0"/>
+                    <GradientStop Color="#FFA522FF" Offset="1"/>
+                    <GradientStop Color="Lime" Offset="0.5"/>
+                    <GradientStop Color="Yellow" Offset="0.25"/>
+                    <GradientStop Color="#FF00AEFF" Offset="0.75"/>
+                </LinearGradientBrush>
+            </Label.Foreground>
+        </Label>
+        <Image x:Name="xe_SideBar_Image_Logo" HorizontalAlignment="Center" Height="128" Margin="0" Grid.Row="1" VerticalAlignment="Center" Width="128" Grid.Column="1" Source="img/Hopstarter-Keriyo-Emoticons-Smiley-upset-4.ico"/>
+        <Button x:Name="xe_SideMenu_Button_Highscore" Content="Highscore" HorizontalAlignment="Left" Margin="10,80,0,0" Grid.Row="1" VerticalAlignment="Top" Width="200" Height="60" FontSize="29.333" FontFamily="Segoe Print" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="1" Click="em_SideMenu_Button_Highscore_OnClick" MouseEnter="em_SideMenu_Highscore_OnMouseEnter" MouseLeave="em_SideMenu_Highscore_OnMouseLeave"/>
+        <Button x:Name="xe_SideMenu_Button_Options" Content="Opcje" HorizontalAlignment="Left" Margin="10,150,0,0" Grid.Row="1" VerticalAlignment="Top" Width="200" Height="60" FontSize="29.333" FontFamily="Segoe Print" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="1" MouseEnter="em_Opcje_OnMouseEnter" MouseLeave="em_Opcje_OnMouseLeave" Click="em_Opcje_OnClick"/>
+        <Button x:Name="xe_SideMenu_Button_About" Content="O aplikacji" HorizontalAlignment="Left" Margin="10,220,0,0" Grid.Row="1" VerticalAlignment="Top" Width="200" Height="60" FontSize="29.333" FontFamily="Segoe Print" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="1" Click="em_About_Button_OnClick" MouseEnter="em_About_Button_OnMouseEnter" MouseLeave="em_About_Button_OnMouseLeave"/>
+        <Button x:Name="xe_SideMenu_Button_Exit" Content="Wyjście" HorizontalAlignment="Left" Margin="10,290,0,0" Grid.Row="1" VerticalAlignment="Top" Width="200" Height="60" FontSize="29.333" FontFamily="Segoe Print" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="1" Click="em_Exit_OnClick" MouseEnter="em_Exit_OnMouseEnter" MouseLeave="em_Exit_OnMouseLeave"/>
+        <Grid x:Name="xe_SideBar_Grid_Highscore" Grid.Column="1" Margin="0" Grid.Row="1" Width="0" HorizontalAlignment="Right" Background="#FFFFBD87">
+            <Button x:Name="xe_Highscore_Button_Back" Content="Schowaj" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="em_Highscore_Button_Back_OnClick" MouseEnter="em_Highscore_Back_OnMouseEnter" MouseLeave="em_Highscore_Back_OnMouseLeave"/>
+            <ListView x:Name="xe_Highscore_ListView" HorizontalAlignment="Left" Height="320" Margin="35,50,0,0" VerticalAlignment="Top" Width="400" SelectionMode="Single">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Nick" Width="150"  DisplayMemberBinding="{Binding nick}"/>
+                        <GridViewColumn Header="Wynik" Width="60" DisplayMemberBinding="{Binding score}"/>
+                        <GridViewColumn Header="Data" Width="190"  DisplayMemberBinding="{Binding date}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Button x:Name="xe_Highscore_Clear" Content="Resetuj wyniki" HorizontalAlignment="Left" Margin="307,0,0,10" VerticalAlignment="Bottom" Width="150" Height="50" FontFamily="Comic Sans MS" FontSize="18.667" MouseEnter="em_Highscores_Button_Clear_OnMouseEnter" Click="em_Highscore_Clear_OnClick" MouseLeave="em_Highscores_Button_Clear_OnMouseLeave"/>
+        </Grid>
+        <Label x:Name="xe_StatusBar_Label_Hint" Content="" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="2" Height="30" Grid.ColumnSpan="2"/>
+        <Grid x:Name="xe_SideBar_Grid_About" Grid.Column="1" HorizontalAlignment="Right" Margin="0" Grid.Row="1" Width="0">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF6191F9" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Image x:Name="xe_About_Image_logo" HorizontalAlignment="Left" Height="100" Margin="55,0,0,19" VerticalAlignment="Bottom" Width="100" Source="img/WIiNoM_small.png"/>
+            <TextBlock x:Name="xe_About_TextBlock_WiiNoM" HorizontalAlignment="Left" Margin="185,0,0,30" TextWrapping="Wrap" Text="Wydział Informatyki i Nauki o Materiałach" VerticalAlignment="Bottom" Width="245" Height="72" Foreground="Red" FontSize="24" FontFamily="Comic Sans MS"/>
+            <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="35,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="250" Width="395" FontSize="16" FontFamily="Times New Roman">
+                     Aplikacja stworzona na przedmiot "Programowanie w środowiskach RAD" jako jeden z projektów na zaliczenie. 
+                <LineBreak/>
+                <LineBreak/>
+                Celem aplikacji jest mierzenie refleksu użytkownika. Oprócz tego apka daje możliwość dostosowania procesu mierzenia refleksu do indywidualnych preferencji użytkownika oraz zapisanie swojego wyniku łącznie z datą.
+                Poza tym, aplikacja ma fikuśne animacje przy otwieraniu zakładek w głównym oknie oraz kolor tekstu przy głównym logo jest animowany. W ogóle apka ma masę fajnych rzeczy, długo by wymieniać... :)
+                <LineBreak/>
+                <LineBreak/>
+                 Zapraszam do korzystania.
+            </TextBlock>
+            <Button x:Name="xe_About_Button_Back" Content="Schowaj" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="em_About_Back_OnClick" MouseEnter="em_About_Back_OnMouseEnter" MouseLeave="em_About_Back_OnMouseLeave"/>
+        </Grid>
+        <Grid x:Name="xe_SideBar_Grid_Settings" Grid.Column="1" HorizontalAlignment="Right" Margin="0" Grid.Row="1" Width="0">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF566E2" Offset="0.016"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Button x:Name="xe_Settings_Back" Content="Schowaj" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="em_Settings_Back_OnClick" MouseEnter="em_Settings_Back_OnMouseEnter" MouseLeave="em_Settings_Back_OnMouseLeave"/>
+            <Button x:Name="xe_Settings_ApplyChanges" Content="Zatwierdź" HorizontalAlignment="Left" Margin="307,0,0,10" VerticalAlignment="Bottom" Width="150" Height="50" FontFamily="Comic Sans MS" FontSize="18.667" MouseEnter="em_Settings_Apply_OnMouseEnter" Click="em_Settings_Apply_OnClick" MouseLeave="em_Settings_Apply_OnMouseLeave" />
+            <Border x:Name="xe_border_Ile" BorderThickness="3" BorderBrush="RoyalBlue" CornerRadius="3" Width="126" Height="39"
+            	HorizontalAlignment="Left" VerticalAlignment="Center" Margin="256,109,0,297">
+                <TextBox x:Name="xe_Settings_TextBox_Ile" HorizontalAlignment="Left" Height="35" Margin="0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" MaxLines="1" FontFamily="Consolas" FontSize="16" Padding="3,0,0,0" VerticalContentAlignment="Center" BorderThickness="0" Background="NavajoWhite" TextChanged="em_Settings_Ile_OnTextChange" HorizontalContentAlignment="Center" />
+            </Border>
+            <Label x:Name="xe_Settings_Label_Ile" Content="Ile kliknięć:" HorizontalAlignment="Left" Margin="91,112,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Comic Sans MS"/>
+            <Border x:Name="xe_border_Bufor" BorderThickness="3" BorderBrush="RoyalBlue" CornerRadius="3" Width="126" Height="39"
+            	HorizontalAlignment="Left" VerticalAlignment="Center" Margin="256,177,0,229">
+                <TextBox x:Name="xe_Settings_TextBox_Bufor" HorizontalAlignment="Left" Height="35" Margin="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" MaxLines="1" FontFamily="Consolas" FontSize="16" Padding="3,0,0,0" VerticalContentAlignment="Center" BorderThickness="0" Background="NavajoWhite" TextChanged="em_Settings_Bufor_OnTextChange" HorizontalContentAlignment="Center" />
+            </Border>
+            <Label x:Name="xe_Settings_Label_Bufor" Content="Bufor [ms]:" HorizontalAlignment="Left" Margin="91,180,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Comic Sans MS"/>
+            <Border x:Name="xe_border_Okres" BorderThickness="3" BorderBrush="RoyalBlue" CornerRadius="3" Width="126" Height="39"
+            	HorizontalAlignment="Left" VerticalAlignment="Center" Margin="256,247,0,159">
+                <TextBox x:Name="xe_Settings_TextBox_Okres" HorizontalAlignment="Left" Height="35" Margin="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" MaxLines="1" FontFamily="Consolas" FontSize="16" Padding="3,0,0,0" VerticalContentAlignment="Center" BorderThickness="0" Background="NavajoWhite"  TextChanged="em_Settings_Okres_OnTextChange" HorizontalContentAlignment="Center" />
+            </Border>
+            <Label x:Name="xe_Settings_Label_Okres" Content="Okres [ms]:" HorizontalAlignment="Left" Margin="91,250,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Comic Sans MS"/>
+            <Label x:Name="xe_Settings_Label_Komunikat" Content="Wprowadzone dane są niepoprawne!" HorizontalAlignment="Left" Margin="10,395,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="Red"/>
+        </Grid>
+        <Label x:Name="xe_StatusBar_Label_Version" Content="v0.9" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,5,0" Grid.Row="2" Height="30"/>
+    </Grid>
+</Window>
